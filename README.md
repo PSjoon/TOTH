@@ -10,9 +10,6 @@
     </ul>
 </div>
 <a href = "mailto:pedrosantos.joon@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-<a href = "https://forms.gle/dcdsqCYo7mckqWnp8">
-    <img src="./web/public/iconsGeneral/formulariosGoogle.png" alt="Simple Icons" width=35>
-</a>
 
 ## Getting Started
 
