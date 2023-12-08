@@ -46,15 +46,18 @@ export function ArticleSearch() {
           return (
             <main className='mx-2 lg:mx-24 my-4 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200'>
               <header className='h-[10vh] lg:h-[14vh] flex float-right items-center justify-between p-2'>
-                <JustMoreVertical />
+                <JustMoreVertical artigo={searchArticleState} />
               </header>
 
-              <Link href={`/artigo/visualizar/${searchArticleState.id} `}>
+              <Link
+                href={`/artigo/visualizar/${searchArticleState.id} `}
+                title='Ver Artigo Completo'>
                 <div className='h-auto mt-2 mx-3 mb-2 p-7 rounded-[25px] overflow-hidden cursor-pointer'>
                   <p className='text-orange-500 mb-4 ml-1 text-ellipsis line-clamp-1 text-lg'>
                     {searchArticleState.title}
                   </p>
                   <div
+                    title='Ver Artigo Completo'
                     className='text-ellipsis line-clamp-4'
                     dangerouslySetInnerHTML={{
                       __html: searchArticleState.text,

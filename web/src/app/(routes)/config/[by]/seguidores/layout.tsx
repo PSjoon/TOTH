@@ -1,13 +1,12 @@
 import { nunito } from '@/app/(global)/layout'
 import { HeaderTablet } from '@/components/computer/home/header/HeaderTablet'
-import { HeaderConfig } from '@/components/geral/config/perfil/HeaderConfig'
 import { MainConfig } from '@/components/geral/config/perfil/MainConfig'
 import { ShowFollow } from '@/components/geral/config/seguidores/ShowFollow'
 import { Footer } from '@/components/mobile/home/footer/Footer'
 import { Header } from '@/components/mobile/home/header/Header'
 
 export const metadata = {
-  title: 'Perfil * Configurações',
+  title: 'Seguidores * Configurações',
   description: 'Perfil Config',
 }
 

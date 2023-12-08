@@ -6,7 +6,7 @@ import { nunito } from '@/app/(global)/layout'
 import { ListCollege } from '@/components/geral/config/faculdades/ListCollege'
 
 export const metadata: Metadata = {
-  title: 'Perfil',
+  title: 'Faculdades * Configurações',
   description: 'Profile Page',
 }
 

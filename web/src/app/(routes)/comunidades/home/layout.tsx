@@ -12,7 +12,7 @@ import { ShowShortComu } from '@/components/geral/comunidades/home/ShowShortComu
 import { MobileComu } from '@/components/geral/comunidades/home/MobileComu'
 
 export const metadata: Metadata = {
-  title: 'Criar Artigo',
+  title: 'Communidades',
   description: 'Artigo Page',
 }
 

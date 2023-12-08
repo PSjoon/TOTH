@@ -10,7 +10,7 @@ import { MainCommunit } from '@/components/geral/comunidades/complete/MainCommun
 import { CommentComu } from '@/components/geral/comunidades/complete/CommentComu'
 
 export const metadata: Metadata = {
-  title: 'Olá Pedro',
+  title: 'Bem-Vindo',
   description: 'Profile Page',
 }
 

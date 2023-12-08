@@ -122,7 +122,7 @@ export function Main() {
                     <Link href={`/perfil/${artigo.by}`}>
                       <div
                         className='w-[8vw] h-[8vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] lg:h-[5vw] rounded-full ml-2  bg-white-200 overflow-hidden'
-                        title='Acessar Perfis'>
+                        title='Acessar Perfil'>
                         <Image
                           src={artigo.profilePictures}
                           alt='Foto do Usuário'
@@ -195,7 +195,7 @@ export function Main() {
                         alt='Avaliação Positiva'
                         className='w-[8px] h-[8px] lg:w-[10px] lg:h-[10px] transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none cursor-pointer'
                       />
-                      <p className='ml-2'>
+                      <p className='ml-2' title='Total de Avaliações'>
                         {Controller == artigo.id
                           ? Reaction
                             ? Reaction

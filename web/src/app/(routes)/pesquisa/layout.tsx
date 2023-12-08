@@ -7,7 +7,7 @@ import { ArtigoCreate } from '@/components/geral/artigo/criar/ArtigoCreate'
 import { RightHome } from '@/components/computer/home/right/RightHome'
 
 export const metadata: Metadata = {
-  title: 'Criar Artigo',
+  title: 'Pesquisa',
   description: 'Artigo Page',
 }
 

@@ -9,7 +9,7 @@ import { ForgotPassword } from '@/components/geral/cadastroLogin/ForgotPassword'
 import { AddEmail } from '@/components/geral/cadastroLogin/AddEmail'
 
 export const metadata = {
-  title: 'Logar',
+  title: 'Alterar Email',
   description: 'Login Page',
 }
 

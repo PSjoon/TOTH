@@ -14,7 +14,7 @@ import { MainConfig } from '@/components/geral/config/notificacoes/MainConfig'
 import { MainConfigComu } from '@/components/geral/comunidades/config/MainConfigComu'
 
 export const metadata: Metadata = {
-  title: 'Criar Artigo',
+  title: 'Configurações',
   description: 'Artigo Page',
 }
 

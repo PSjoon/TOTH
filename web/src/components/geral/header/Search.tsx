@@ -31,13 +31,14 @@ export function Search() {
   }
 
   const submitClick = () => {
-    router.push(`/pesquisa?search=${searchBase}`)
-
     const currentURL = window.location.href
     const urlParams = new URL(currentURL)
     console.log(urlParams.pathname)
+
     if (urlParams.pathname == '/pesquisa') {
-      window.location.reload()
+      window.location.search = `search=${searchBase}`
+    } else {
+      router.push(`/pesquisa?search=${searchBase}`)
     }
   }
 

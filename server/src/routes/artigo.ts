@@ -41,6 +41,44 @@ export async function Artigo(app: FastifyInstance) {
     return artigoData
   })
 
+  app.get('/artigoale', async (req) => {
+    const artigo = await prisma.artigo.findMany({
+      orderBy: {
+        reaction: 'asc',
+      },
+    })
+
+    const artigoData = await Promise.all(
+      artigo.map(async (artigo) => {
+        const usuario = await prisma.usuario.findUnique({
+          where: {
+            id: artigo.by,
+          },
+        })
+
+        return {
+          id: artigo.id,
+          dateCreated: artigo.dateCreated,
+          photo: artigo.photo,
+          reaction: artigo.reaction,
+          text: artigo.text,
+          title: artigo.title,
+          by: artigo.by,
+          file: artigo.file,
+          scielo: artigo.scielo,
+
+          profilePictures: usuario?.profilePictures,
+          username: usuario?.username,
+          college: usuario?.college,
+          email: usuario?.email,
+          savedPosts: usuario?.savedPosts,
+        }
+      }),
+    )
+
+    return artigoData
+  })
+
   app.get('/artigo/:by', async (req, res) => {
     const paramSchema = z.object({
       by: z.string(),

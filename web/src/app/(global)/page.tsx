@@ -1,4 +1,7 @@
+'use client'
+
 import { Main } from '@/components/geral/main/Main'
+import { useState } from 'react'
 
 export default function Home() {
   return (

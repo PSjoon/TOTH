@@ -8,7 +8,7 @@ import { InsideLogin } from '@/components/geral/cadastroLogin/InsideLogin'
 import { ForgotPassword } from '@/components/geral/cadastroLogin/ForgotPassword'
 
 export const metadata = {
-  title: 'Logar',
+  title: 'Alterar Senha',
   description: 'Login Page',
 }
 

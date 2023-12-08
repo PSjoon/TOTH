@@ -6,7 +6,7 @@ import { Footer } from '@/components/mobile/home/footer/Footer'
 import { Header } from '@/components/mobile/home/header/Header'
 
 export const metadata = {
-  title: 'Perfil * Configurações',
+  title: 'Redefinir Senha* Configurações',
   description: 'Perfil Config',
 }
 

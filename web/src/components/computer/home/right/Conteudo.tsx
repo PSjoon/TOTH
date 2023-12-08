@@ -19,14 +19,16 @@ interface Artigo {
 }
 
 export async function Conteudo() {
-  const response = await api.get('/artigo')
+  const response = await api.get('/artigoale')
   const artigo: Artigo[] = response.data
 
   return (
     <>
-      {artigo.map((artigo) => {
+      {artigo.slice(0, 4).map((artigo) => {
         return (
-          <Link href={`/artigo/visualizar/${artigo.id} `}>
+          <Link
+            href={`/artigo/visualizar/${artigo.id} `}
+            title='Ver Artigo Completo'>
             <div className='w-[19vw] mb-2 lg:w-[19vw] h-auto p-3 rounded-[25px] border-l-[1px] border-orange-500 bg-gray-300'>
               <p className='text-orange-500 ml-1 text-ellipsis line-clamp-1 '>
                 {artigo.title}

@@ -42,20 +42,20 @@ export function UserSearch() {
         searchUserState.map((searchUserState) => {
           return (
             <div className='md:mx-6 my-2 lg:mx-28 lg:ml-[133px] mx-2 border-y-[1px] border-orange-500 rounded-3xl bg-gray-200'>
-              <div className='grid grid-cols-2 grid-flow-row p-[11px] items-center'>
-                <div>
-                  <Link href={`/perfil/${searchUserState.id}`}>
-                    <div
-                      className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  bg-white-200 overflow-hidden mb-2'
-                      title='Acessar Perfis'>
-                      <Image
-                        src={searchUserState.profilePictures}
-                        alt=''
-                        width={128}
-                        height={128}
-                      />
-                    </div>
-                  </Link>
+              <Link
+                href={`/perfil/${searchUserState.id}`}
+                title='Acessar Perfil'>
+                <div className='p-[11px] flex items-center '>
+                  <div
+                    className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  bg-white-200 overflow-hidden mb-2'
+                    title='Foto Do Usuário'>
+                    <Image
+                      src={searchUserState.profilePictures}
+                      alt='foto do usuario'
+                      width={128}
+                      height={128}
+                    />
+                  </div>
 
                   <div className='sm:text-sm md:text-xl ml-4'>
                     <p>{searchUserState.username}</p>
@@ -64,7 +64,7 @@ export function UserSearch() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           )
         })

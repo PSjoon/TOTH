@@ -11,7 +11,7 @@ import { MainComu } from '@/components/geral/comunidades/home/MainComu'
 import { ListarComu } from '@/components/geral/comunidades/home/ListarComu'
 
 export const metadata: Metadata = {
-  title: 'Criar Artigo',
+  title: 'Comunidades',
   description: 'Artigo Page',
 }
 

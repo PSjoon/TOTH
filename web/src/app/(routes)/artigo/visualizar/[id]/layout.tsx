@@ -12,7 +12,7 @@ import { Comment } from '@/components/geral/artigo/visualizar/Comment'
 import { ListComment } from '@/components/geral/artigo/visualizar/listComment'
 
 export const metadata: Metadata = {
-  title: 'Criar Artigo',
+  title: 'Visualizar Artigo',
   description: 'Artigo Page',
 }
 

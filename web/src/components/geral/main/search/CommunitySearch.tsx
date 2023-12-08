@@ -24,9 +24,6 @@ export function CommunitySearch() {
 
     const response = await api.post(`/search/${search}`)
 
-    console.log(response.data)
-    console.log(response)
-
     const searchCommunity: Community[] = response.data.comunidades
 
     setSearchCommuinity(searchCommunity)
@@ -43,7 +40,7 @@ export function CommunitySearch() {
           return (
             <div
               key={searchCommuinityState.id}
-              className='p-4 mb-4 my-4 border-x-[1px] border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200'>
+              className='p-4 mb-4 my-4 border-x-[1px] grid grid-flow-col columns-2 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200'>
               {searchCommuinityState.photo ? (
                 <Link
                   href={`/comunidades/visualizar/${searchCommuinityState.id}`}>
@@ -53,24 +50,22 @@ export function CommunitySearch() {
                       alt=''
                       width={500}
                       height={500}
-                      className='md:h-16 w-full aspect-video rounded-xl object-cover'
+                      className='md:h-36 aspect-video rounded-xl object-cover'
                     />
                   </div>
                 </Link>
               ) : null}
 
               <Link
-                href={`/comunidades/visualizar/${searchCommuinityState.id}`}>
+                href={`/comunidades/visualizar/${searchCommuinityState.id}`}
+                className='flex flex-col justify-center'>
                 <p
-                  className='ml-2 my-2 italic text-orange-500'
-                  title='Nome Comunidade'>
+                  className='ml-2 my-2 italic text-lg text-orange-500'
+                  title='Nome da Comunidade'>
                   {searchCommuinityState.comuName}
                 </p>
-              </Link>
 
-              <Link
-                href={`/comunidades/visualizar/${searchCommuinityState.id}`}>
-                <div className='h-24 w-44 ml-[50vw] rounded-lg border border-orange-500 p-2 text-sm break-words'>
+                <div className='h-24 w-52 rounded-lg border border-orange-500 p-2 break-words'>
                   {searchCommuinityState.description}
                 </div>
               </Link>

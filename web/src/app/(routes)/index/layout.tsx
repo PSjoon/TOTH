@@ -6,7 +6,7 @@ import { HomeGeral } from '@/components/geral/home/HomeGeral'
 import { HomeHeaderTablet } from '@/components/geral/home/HomeHeaderTablet'
 
 export const metadata: Metadata = {
-  title: 'Perfil',
+  title: 'Bem-Vindo ao TOTH',
   description: 'Profile Page',
 }
 
