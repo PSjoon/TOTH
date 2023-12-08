@@ -1,13 +1,19 @@
 import { api } from '@/lib/api'
 import { getUserJS } from '@/lib/authGithub'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export function ShowOptions(artigoId: any) {
   const [IsFollow, setIsFollow] = useState(false)
   const [Return, setReturn] = useState('')
 
+  const routes = useRouter()
+
   const jwtInFo = getUserJS()
+  if (!jwtInFo) {
+    routes.push('/cadastrar?error=UserLoggedRequire')
+  }
+
   const id = useParams()
 
   async function Strike() {

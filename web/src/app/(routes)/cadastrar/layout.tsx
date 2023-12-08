@@ -3,6 +3,8 @@ import { ExternalLogin } from '@/components/geral/cadastroLogin/ExternalLogin'
 import { InsideCadastro } from '@/components/geral/cadastroLogin/InsideCadastro'
 import Image from 'next/image'
 import logo from '/public/iconsGeneral/logo.svg'
+import { getUserJS } from '@/lib/authGithub'
+import { useRouter } from 'next/router'
 
 export const metadata = {
   title: 'Cadastre-se',

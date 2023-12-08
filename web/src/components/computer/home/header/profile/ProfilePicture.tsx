@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 export function ProfilePicture() {
   return (
     <>
-      <Link href='/cadastrar'>
+      <Link href='/cadastrar?error=UserLoggedRequire'>
         <Image
           src={User}
           alt='Não Logado'

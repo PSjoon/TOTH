@@ -102,6 +102,14 @@ export function ArtigoCreate() {
     }
   }
 
+  const routes = useRouter()
+
+  const jwtInFo = getUserJS()
+
+  if (!jwtInFo) {
+    routes.push('/cadastrar?error=UserLoggedRequire')
+  }
+
   return (
     <form
       onSubmit={HandleSubmit}

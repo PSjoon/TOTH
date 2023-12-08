@@ -4,12 +4,22 @@ import { UserSearch } from './UserSearch'
 import { ArticleSearch } from './ArticleSearch'
 import { CommunitySearch } from './CommunitySearch'
 import { useState } from 'react'
+import { getUserJS } from '@/lib/authGithub'
+import { useRouter } from 'next/navigation'
 
 export function Search() {
   const [selectedOption, setSelectedOption] = useState('usuarios')
 
   const handleOptionChange = (event: any) => {
     setSelectedOption(event.target.value)
+  }
+
+  const routes = useRouter()
+
+  const jwtInFo = getUserJS()
+
+  if (!jwtInFo) {
+    routes.push('/cadastrar?error=UserLoggedRequire')
   }
 
   return (

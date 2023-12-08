@@ -10,6 +10,7 @@ import { api } from '@/lib/api'
 import { useRouter } from 'next/navigation'
 import { button } from '@material-tailwind/react'
 import Link from 'next/link'
+import { getUserJS } from '@/lib/authGithub'
 
 export function Search() {
   const [showInput, setShowInput] = useState(false)
@@ -39,6 +40,24 @@ export function Search() {
       window.location.reload()
     }
   }
+
+  const [message, setMessage] = useState('')
+
+  const jwtInFo = getUserJS()
+
+  useEffect(() => {
+    const currentURL = window.location.href
+    const urlParams = new URL(currentURL)
+    const messageParam = urlParams.searchParams.get('error')
+    if (messageParam) {
+      setMessage(messageParam)
+
+      const timeout = setTimeout(() => {
+        setMessage('')
+      }, 10000)
+      return () => clearTimeout(timeout)
+    }
+  }, [])
 
   return (
     <>

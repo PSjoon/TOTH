@@ -12,6 +12,10 @@ import { ISODateString } from 'next-auth'
 import { Switch } from '@headlessui/react'
 import { useState, useEffect } from 'react'
 import { fetchData } from 'next-auth/client/_utils'
+import { getUserJS } from '@/lib/authGithub'
+import { useRouter } from 'next/navigation'
+import { RetornoLogin } from '../cadastroLogin/RetornoLogin'
+import { ReturnAll } from '../retorno/ReturnAll'
 
 interface Artigo {
   [x: string]: any
@@ -48,7 +52,14 @@ export function Main() {
     }
   }
 
+  const routes = useRouter()
+  const jwtInFo = getUserJS()
+
   const arrowUp = async (artigoId: string) => {
+    if (!jwtInFo) {
+      routes.push('/cadastrar?error=UserLoggedRequire')
+    }
+
     setController(artigoId)
     try {
       const response = await api.post('/arrowUp', {
@@ -69,12 +80,37 @@ export function Main() {
     setReturn('Copiado')
   }
 
+  const arrowDown = () => {
+    if (!jwtInFo) {
+      routes.push('/cadastrar?error=UserLoggedRequire')
+    }
+  }
+
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    const currentURL = window.location.href
+    const urlParams = new URL(currentURL)
+    const messageParam = urlParams.searchParams.get('error')
+    if (messageParam) {
+      setMessage(messageParam)
+
+      const timeout = setTimeout(() => {
+        setMessage('')
+      }, 10000)
+      return () => clearTimeout(timeout)
+    }
+  }, [])
+
   useEffect(() => {
     fetchData()
   }, [])
 
   return (
     <>
+      {message ? <ReturnAll message={message} /> : null}
+      {Return ? <ReturnAll message={Return} /> : null}
+
       {Article
         ? Article.map((artigo: any) => {
             return (
@@ -135,6 +171,7 @@ export function Main() {
                       src={downIcon}
                       alt='Avaliação Negativa'
                       title='Avaliação Negativa'
+                      onClick={arrowDown}
                       className='w-[26px] h-[26px] lg:w-[25px] lg:h-[25px] md:w-8 md:h-8 transition hover:translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none cursor-pointer'
                     />
 

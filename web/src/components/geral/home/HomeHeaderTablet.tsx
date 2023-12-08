@@ -7,9 +7,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 export function HomeHeaderTablet() {
-  const [hoveredComunity, setHoveredComunity] = useState(false)
-  const [hoveredCreate, setHoveredCreate] = useState(false)
-
   return (
     <div className='w-full flex items-center justify-between z-50'>
       <Link href={'/'}>

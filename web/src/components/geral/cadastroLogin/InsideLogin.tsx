@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'
 import emailjs from '@emailjs/browser'
 import Link from 'next/link'
+import { getUserJS } from '@/lib/authGithub'
 
 const createLoginFormsSchema = z.object({
   email: z
@@ -40,6 +41,12 @@ export function InsideLogin() {
   })
 
   const routes = useRouter()
+
+  const jwtInFo = getUserJS()
+
+  if (jwtInFo) {
+    routes.push('/?error=userLogged')
+  }
 
   async function loginUser(data: any) {
     try {
@@ -86,7 +93,7 @@ export function InsideLogin() {
 
       routes.push('/')
     } catch (error) {
-      routes.push('/cadastrar?error=userNotExisted')
+      window.location.search = 'error=userNotExisted'
     }
   }
 

@@ -6,12 +6,15 @@ import { ShowOptions } from './ShowOptions'
 import { useEffect, useState } from 'react'
 import { getUserJS } from '@/lib/authGithub'
 import { api } from '@/lib/api'
+import { useRouter } from 'next/navigation'
 
 export function OptionsPost(artigo: any) {
   const [pointiconColor, setpointIconColor] = useState('#EFEFEF')
   const [pointfillIcon, setpointfillIcon] = useState('#EFEFEF')
   const [isVisible, setVisible] = useState(false)
   const [CheckSave, setCheckSave] = useState(false)
+
+  const routes = useRouter()
 
   const checkSaveArticle = () => {
     const artigoIdentity = artigo.artigo.id
@@ -51,6 +54,10 @@ export function OptionsPost(artigo: any) {
       } catch (error) {
         console.error(error)
       }
+    } else {
+      if (!jwtInFo) {
+        routes.push('/cadastrar?error=UserLoggedRequire')
+      }
     }
   }
 
@@ -61,7 +68,7 @@ export function OptionsPost(artigo: any) {
   }
 
   return (
-    <div className='flex mr-2 z-50'>
+    <div className='flex mr-2'>
       <span title='Salvar Postagem'>
         <Bookmark
           size={30}

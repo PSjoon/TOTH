@@ -16,7 +16,7 @@ export function HeaderTablet() {
   const [hoveredCreate, setHoveredCreate] = useState(false)
 
   return (
-    <div className='w-full flex items-center justify-between'>
+    <div className='w-full flex items-center justify-between '>
       <Link href={'/'}>
         <Image
           src={logo}

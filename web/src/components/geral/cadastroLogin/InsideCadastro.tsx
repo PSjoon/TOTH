@@ -8,6 +8,7 @@ import { z } from 'zod'
 import { api } from '@/lib/api'
 import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'
+import { getUserJS } from '@/lib/authGithub'
 
 const createUserFormSchema = z
   .object({
@@ -19,7 +20,7 @@ const createUserFormSchema = z
     confirmPassword: z.string().min(1, 'Campo Obrigatório'),
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
-    message: 'As Duas Senhas não Coincidem',
+    message: 'As Duas Senhas são Diferentes',
     path: ['confirmPassword'],
   })
 
@@ -52,6 +53,12 @@ export function InsideCadastro() {
   // send to BD
   const routes = useRouter()
 
+  // const jwtInFo = getUserJS()
+
+  // if (jwtInFo) {
+  //   routes.push('/error=userLogged')
+  // }
+
   async function createNewUser(data: any) {
     try {
       const response = await api.post('/cadastrar', {
@@ -72,8 +79,8 @@ export function InsideCadastro() {
 
       routes.push('/')
     } catch (error) {
-      console.log(error)
-      routes.push('/cadastrar?error=userNotExisting')
+      // console.log(error)
+      window.location.search = 'error=userNotExisting'
     }
   }
 

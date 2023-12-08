@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { text } from 'stream/consumers'
 import { Retorno } from '@/components/geral/cadastroLogin/Retorno'
+import { RetornoLogin } from '@/components/geral/cadastroLogin/RetornoLogin'
+import { getUserJS } from '@/lib/authGithub'
 
 export default function Logar() {
   const [message, setMessage] = useState('')
@@ -20,14 +22,22 @@ export default function Logar() {
 
       const timeout = setTimeout(() => {
         setMessage('')
-      }, 5000)
+      }, 10000)
       return () => clearTimeout(timeout)
     }
   }, [])
 
+  const routes = useRouter()
+
+  const jwtInFo = getUserJS()
+
+  if (jwtInFo) {
+    routes.push('/?error=userLogged')
+  }
+
   return (
     <div className='my-[12vh] fixed'>
-      {message == 'userExisting' ? <Retorno /> : ''}
+      {message == 'userNotExisted' ? <RetornoLogin /> : ''}
       <div className='mx-[22%] mb-10'>
         <Image src={logo} alt='' className='w-[250px]' />
       </div>
