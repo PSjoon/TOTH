@@ -96,6 +96,7 @@ export function InsideCadastro() {
               <input
                 className='peer h-full w-full rounded-2xl border border-white-300 bg-transparent px-3 py-3 font-sans text-sm font-normal text-white-50 outline outline-0 transition-all placeholder-shown:border-t-white-300 focus:border-2 focus:border-orange-500 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0'
                 placeholder=' '
+                title='Digite seu Melhor Email'
                 type='email'
                 {...register('email')}
                 name='email'
@@ -117,6 +118,7 @@ export function InsideCadastro() {
               <input
                 className='peer h-full w-full rounded-2xl border border-white-300 bg-transparent px-3 py-3 font-sans text-sm font-normal text-white-50 outline outline-0 transition-all placeholder-shown:border-t-white-300 focus:border-2 focus:border-orange-500 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0'
                 placeholder=' '
+                title='Digite seu Nome'
                 type='text'
                 {...register('username')}
                 name='username'
@@ -138,6 +140,7 @@ export function InsideCadastro() {
               <input
                 className='peer h-full w-full rounded-2xl border border-white-300 bg-transparent px-3 py-3 font-sans text-sm font-normal text-white-50 outline outline-0 transition-all placeholder-shown:border-t-white-300 focus:border-2 focus:border-orange-500 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0'
                 placeholder=' '
+                title='Digite seu Apellido'
                 type='text'
                 {...register('nickname')}
                 name='nickname'
@@ -159,6 +162,7 @@ export function InsideCadastro() {
               <input
                 className='peer h-full w-full rounded-2xl border border-white-300 bg-transparent px-3 py-3 font-sans text-sm font-normal text-white-50 outline outline-0 transition-all placeholder-shown:border-t-white-300 focus:border-2 focus:border-orange-500 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0'
                 placeholder=' '
+                title='Digite sua Senha'
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 {...register('password')}
@@ -190,6 +194,7 @@ export function InsideCadastro() {
               <input
                 className='peer h-full w-full rounded-2xl border border-white-300 bg-transparent px-3 py-3 font-sans text-sm font-normal text-white-50 outline outline-0 transition-all placeholder-shown:border-t-white-300 focus:border-2 focus:border-orange-500 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0'
                 placeholder=' '
+                title='Confirme sua Senha'
                 type={showPasswordConfirm ? 'text' : 'password'}
                 value={passwordConfirm}
                 {...register('confirmPassword')}
@@ -222,6 +227,7 @@ export function InsideCadastro() {
               id='link-checkbox'
               type='checkbox'
               {...register('terms')}
+              title='Termos de Uso'
               value=''
               className='w-4 h-4 text-orange-500 bg-orange-500 bg-opacity-80 border-orange-500 focus:ring-orange-500 focus:ring-1 rounded'
             />
@@ -242,7 +248,8 @@ export function InsideCadastro() {
           <div className='flex items-center justify-center'>
             <button
               className='hover:bg-orange-600 text-black font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded-3xl bg-orange-500'
-              type='submit'>
+              type='submit'
+              title='Confirme seu Cadastro e seja Bem-Vindo(a) ao TOTH'>
               Pronto!
             </button>
           </div>

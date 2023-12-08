@@ -108,6 +108,7 @@ export function InsideLogin() {
               <input
                 className='peer h-full w-full rounded-2xl border border-white-300 bg-transparent px-3 py-3 font-sans text-sm font-normal text-white-50 outline outline-0 transition-all placeholder-shown:border-t-white-300 focus:border-2 focus:border-orange-500 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0'
                 placeholder=' '
+                title='Digite seu Melhor Email'
                 {...register('email')}
               />
               <label
@@ -127,12 +128,15 @@ export function InsideLogin() {
                 className='peer h-full w-full rounded-2xl border border-white-300 bg-transparent px-3 py-3 font-sans text-sm font-normal text-white-50 outline outline-0 transition-all placeholder-shown:border-t-white-300 focus:border-2 focus:border-orange-500 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0'
                 placeholder=' '
                 {...register('password')}
+                title='Digite sua Senha'
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete='current-password'
               />
-              <div className='absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none cursor-pointer'>
+              <div
+                className='absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none cursor-pointer'
+                title='Revelar ou Ocultar Senha'>
                 {showPassword ? (
                   <EyeOff onClick={togglePasswordVisibility} />
                 ) : (
@@ -153,11 +157,14 @@ export function InsideLogin() {
           <div className='flex items-center justify-center gap-4'>
             <button
               className='hover:bg-orange-600 text-black font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded-3xl bg-orange-500'
-              type='submit'>
+              type='submit'
+              title='Confirmação de Login'>
               Pronto!
             </button>
             <Link href={'/password/adicionaremail'}>
-              <p className='italic text-orange-500 hover:underline cursor-pointer'>
+              <p
+                className='italic text-orange-500 hover:underline cursor-pointer'
+                title='Redefina Sua Senha Esquecida'>
                 Esqueceu sua senha?
               </p>
             </Link>

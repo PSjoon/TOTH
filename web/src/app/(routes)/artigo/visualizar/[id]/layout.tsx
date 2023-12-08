@@ -22,40 +22,37 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
-      <body
-        className={`${nunito.variable} font-sans bg-gray-600 text-white-200`}>
-        <header>
-          <div className='w-full h-16 hidden fixed md:flex bg-gray-800 border-b-2 border-orange-500'>
-            <HeaderTablet />
-          </div>
-          <div className='md:hidden lg:hidden mb-4'>
-            <Header />
-          </div>
-        </header>
-
-        <main className='grid min-h-screen'>
-          {/* <section className='hidden md:hidden lg:flex'>{children}</section> */}
-
-          <div className='md:mx-4 lg:ml-10 md:mt-[80px] '>
-            <ShowArticle />
-          </div>
-        </main>
-
-        <div className='md:mx-4 lg:ml-10 md:-mt-40'>
-          <Comment />
+    <div className={`${nunito.variable} font-sans bg-gray-600 text-white-200`}>
+      <header>
+        <div className='w-full h-16 hidden fixed md:flex bg-gray-800 border-b-2 border-orange-500'>
+          <HeaderTablet />
         </div>
-
-        <div className='md:mx-4 lg:ml-10'>
-          <ListComment />
+        <div className='md:hidden lg:hidden mb-4'>
+          <Header />
         </div>
+      </header>
 
-        <footer>
-          <div className='md:hidden lg:hidden'>
-            <Footer />
-          </div>
-        </footer>
-      </body>
-    </html>
+      <main className='grid min-h-screen'>
+        {/* <section className='hidden md:hidden lg:flex'>{children}</section> */}
+
+        <div className='md:mx-4 lg:ml-10 md:mt-[80px] '>
+          <ShowArticle />
+        </div>
+      </main>
+
+      <div className='md:mx-4 lg:ml-10 '>
+        <Comment />
+      </div>
+
+      <div className='md:mx-4 lg:ml-10'>
+        <ListComment />
+      </div>
+
+      <footer>
+        <div className='md:hidden lg:hidden'>
+          <Footer />
+        </div>
+      </footer>
+    </div>
   )
 }

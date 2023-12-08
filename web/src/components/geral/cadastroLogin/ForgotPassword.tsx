@@ -29,6 +29,7 @@ export function ForgotPassword() {
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
   const [Retorno, setRetorno] = useState('')
+  const jwtInFo = getUserJS()
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
@@ -73,6 +74,12 @@ export function ForgotPassword() {
     }
   }
 
+  useEffect(() => {
+    if (jwtInFo) {
+      routes.push('/cadastrar?error=UserLoggedRequire')
+    }
+  }, [])
+
   return (
     <>
       {Retorno == 'Senha Alterada com Sucesso' ? (
@@ -85,26 +92,28 @@ export function ForgotPassword() {
 
       <form
         onSubmit={handleSubmit(ChangePassword)}
-        className='w-[20vw] h-[35vh] mx-2 border-[1px] border-orange-500 text-white-200 bg-gray-200 rounded-3xl p-4 flex flex-col gap-6 justify-center items-center'>
+        className='w-[260px] h-[250px] mx-2 border-[1px] border-orange-500 text-white-200 bg-gray-200 rounded-3xl p-4 flex flex-col gap-6 justify-center items-center'>
         <div>
           <label htmlFor='senha'>Digite sua Nova Senha:</label>
 
-          <input
-            className='w-[88%] p-[3px] pl-4 text-sm rounded-l-3xl bg-gray-800 ring-0 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0 focus:border-y-gray-500 focus:border-l-gray-500 focus:border-1 focus:border-r-0 border-r-0'
-            placeholder='Senha'
-            type={showPassword ? 'text' : 'password'}
-            value={password}
-            {...register('password')}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete='current-password'
-            id='senha'
-          />
-          <div className='absolute top-[41vh] left-[81.6vw] flex items-center focus:outline-none cursor-pointer bg-gray-800 border border-gray-500 rounded-r-3xl border-l-0 p-[0.8px] px-[2px]'>
-            {showPassword ? (
-              <EyeOff onClick={togglePasswordVisibility} />
-            ) : (
-              <Eye onClick={togglePasswordVisibility} />
-            )}
+          <div className='flex'>
+            <input
+              className='w-[88%] p-[3px] pl-4 text-sm rounded-l-3xl bg-gray-800 ring-0 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0 focus:border-y-gray-500 focus:border-l-gray-500 focus:border-1 focus:border-r-0 border-r-0'
+              placeholder='Senha'
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              {...register('password')}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete='current-password'
+              id='senha'
+            />
+            <div className=' top-[41vh] left-[81.6vw] flex items-center focus:outline-none cursor-pointer bg-gray-800 border border-gray-500 rounded-r-3xl border-l-0 p-[0.8px] px-[2px]'>
+              {showPassword ? (
+                <EyeOff onClick={togglePasswordVisibility} />
+              ) : (
+                <Eye onClick={togglePasswordVisibility} />
+              )}
+            </div>
           </div>
           <p className='absolute text-red-500 text-[11px] ml-4 mt-0.5 opacity-80'>
             {errors.password && <span>{errors.password.message}</span>}
@@ -113,22 +122,24 @@ export function ForgotPassword() {
         <div>
           <label htmlFor='senha'>Confirm sua Senha:</label>
 
-          <input
-            className='w-[88%] p-[3px] pl-4 text-sm rounded-l-3xl bg-gray-800 ring-0 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0 focus:border-y-gray-500 focus:border-l-gray-500 focus:border-1 focus:border-r-0 border-r-0'
-            placeholder='Senha'
-            type={showPasswordConfirm ? 'text' : 'password'}
-            value={passwordConfirm}
-            {...register('confirmPassword')}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-            autoComplete='current-password'
-            id='senha'
-          />
-          <div className='absolute top-[52.1vh] left-[81.6vw] flex items-center focus:outline-none cursor-pointer bg-gray-800 border border-gray-500 rounded-r-3xl border-l-0 p-[0.8px] px-[2px]'>
-            {showPasswordConfirm ? (
-              <EyeOff onClick={togglePasswordVisibilityConfirm} />
-            ) : (
-              <Eye onClick={togglePasswordVisibilityConfirm} />
-            )}
+          <div className='flex'>
+            <input
+              className='w-[88%] p-[3px] pl-4 text-sm rounded-l-3xl bg-gray-800 ring-0 focus:outline-0 disabled:border-0 focus:outline-none focus:ring-0 focus:border-y-gray-500 focus:border-l-gray-500 focus:border-1 focus:border-r-0 border-r-0'
+              placeholder='Senha'
+              type={showPasswordConfirm ? 'text' : 'password'}
+              value={passwordConfirm}
+              {...register('confirmPassword')}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+              autoComplete='current-password'
+              id='senha'
+            />
+            <div className=' top-[52.1vh] left-[81.6vw] flex items-center focus:outline-none cursor-pointer bg-gray-800 border border-gray-500 rounded-r-3xl border-l-0 p-[0.8px] px-[2px]'>
+              {showPasswordConfirm ? (
+                <EyeOff onClick={togglePasswordVisibilityConfirm} />
+              ) : (
+                <Eye onClick={togglePasswordVisibilityConfirm} />
+              )}
+            </div>
           </div>
           <p className='absolute text-red-500 text-[11px] ml-4 mt-0.5 opacity-80'>
             {errors.confirmPassword && (

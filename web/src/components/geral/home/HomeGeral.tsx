@@ -5,8 +5,8 @@ import logo from '/public/iconsGeneral/logo-ramo.svg'
 export function HomeGeral() {
   return (
     <>
-      <div className='mx-2 lg:mx-[20%] md:my-4 my-10 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 md:mt-[88px] flex items-center justify-center'>
-        <div className='text-center leading-relaxed md:my-4 flex flex-col justify-center items-center md:gap-16 gap-6 '>
+      <div className=' mx-2 lg:mx-[15%] md:mx-[10%] md:my-4 my-10 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 md:mt-[88px] flex items-center justify-center'>
+        <div className='text-center leading-relaxed md:my-4 flex flex-col justify-center items-center md:gap-16 gap-6 my-4'>
           <div className='flex flex-col justify-center items-center gap-4'>
             <Image
               src={logo}
@@ -31,7 +31,9 @@ export function HomeGeral() {
 
           <Link href={'/'}>
             <div className='flex justify-center items-center'>
-              <p className='hover:underline hover:bg-orange-900 bg-orange-500 rounded-md p-2'>
+              <p
+                className='hover:underline hover:bg-orange-900 bg-orange-500 rounded-md p-2'
+                title='Acessar TOTH'>
                 Conheça o TOTH
               </p>
             </div>
@@ -39,8 +41,8 @@ export function HomeGeral() {
         </div>
       </div>
 
-      <div className='mx-2 h-96 lg:mx-[8%] md:my-4 my-10 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'>
-        <div className='flex justify-between gap-32'>
+      <div className='mx-2 h-96 lg:mx-[4%] md:my-4 my-10 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'>
+        <div className='flex justify-between gap-8 md:gap-12 lg:gap-32 '>
           <div className=' flex flex-col justify-center text-justify items-center my-4'>
             <p>Mariana Ferreira</p>
             <p
@@ -48,7 +50,7 @@ export function HomeGeral() {
             '>
               Co-Fundador TOTH
             </p>
-            <div className='h-full w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 md:mt-[88px] flex justify-center'></div>
+            <div className='h-full my-4 w-[26vw]  lg:w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'></div>
           </div>
 
           <div className=' flex flex-col justify-center text-justify items-center my-4'>
@@ -58,7 +60,7 @@ export function HomeGeral() {
             '>
               Co-Fundador TOTH
             </p>
-            <div className='h-full w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 md:mt-[88px] flex justify-center'></div>
+            <div className='h-full my-4 w-[26vw]  lg:w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'></div>
           </div>
 
           <div className=' flex flex-col justify-center text-justify items-center my-4'>
@@ -68,13 +70,13 @@ export function HomeGeral() {
             '>
               Co-Fundador TOTH
             </p>
-            <div className='h-full w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 md:mt-[88px] flex justify-center'></div>
+            <div className='h-full my-4 w-[26vw]  lg:w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'></div>
           </div>
         </div>
       </div>
 
-      <footer className='w-full text-gray-500 bg-gray-800 text-opacity-80 mt-10'>
-        <div className='grid md:grid-cols-3 grid-cols-2 grid-flow-col gap-10 md:mx-20 mx-4 text-sm my-8 justify-center items-center leading-relaxed'>
+      <footer className='w-full  text-gray-500 bg-gray-800 '>
+        <div className='grid md:grid-cols-3 grid-cols-3 grid-flow-col gap-10 md:mx-20 mx-4 text-sm my-8 justify-center items-center leading-relaxed'>
           <div className='flex flex-col gap-6'>
             <p className='text-orange-500'>Sobre TOTH:</p>
             <p>Políticas de Privacidade</p>
@@ -91,14 +93,15 @@ export function HomeGeral() {
               <p>Github</p>
             </Link>
           </div>
-          <div className='hidden md:block'>
+
+          <div className='flex flex-col'>
             <Image
               src={logo}
               alt='Voltar a Página'
               className='w-10'
               title='Página Inicial'
             />
-            <div className='mt-2'>
+            <div className='mt-2' title='slogan'>
               Democratizando o acesso <p>à informação de qualidade</p>
             </div>
           </div>

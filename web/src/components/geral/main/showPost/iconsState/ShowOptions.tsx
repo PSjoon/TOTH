@@ -1,3 +1,4 @@
+import { ReturnAll } from '@/components/geral/retorno/ReturnAll'
 import { api } from '@/lib/api'
 import { getUserJS } from '@/lib/authGithub'
 import { useParams, useRouter } from 'next/navigation'
@@ -14,13 +15,16 @@ export function ShowOptions(artigoId: any) {
     routes.push('/cadastrar?error=UserLoggedRequire')
   }
 
-  const id = useParams()
-
   async function Strike() {
     const idArticle = artigoId.artigoId.id
 
     try {
       const userFollows = await api.post('/strike', { idArticle })
+      if (userFollows) {
+        const currentURL = window.location.href
+        console.log(currentURL)
+        setReturn('denunciadoSucesso')
+      }
     } catch (error) {
       console.log(error)
     }
@@ -36,7 +40,8 @@ export function ShowOptions(artigoId: any) {
 
       setIsFollow(!IsFollow)
       if (response) {
-        setReturn('Seguido Usuário')
+        // setReturn('Seguido Usuário')
+        routes.push('/?error=seguidoUsuario')
       }
     }
   }
@@ -46,8 +51,6 @@ export function ShowOptions(artigoId: any) {
       const { sub } = jwtInFo
 
       const response = await api.post(`/perfil/follow/${sub}`)
-
-      console.log(response.data)
 
       if (response.data.includes(artigoId.artigoId.by)) {
         setIsFollow(true)
@@ -75,31 +78,35 @@ export function ShowOptions(artigoId: any) {
   }, [])
 
   return (
-    <div className='w-25 absolute grid grid-flow-row -ml-[120px] mt-10 overflow-hidden leading-relaxed rounded-3xl bg-gray-900'>
-      {isUser() ? (
-        <div className='text-sm p-2 mx-1 cursor-pointer'>
-          {!IsFollow ? (
-            <p className='' onClick={Follow}>
-              Seguir Usuário
-            </p>
-          ) : (
-            <p className='text-orange-500' onClick={Follow}>
-              Deixar de Seguir
-            </p>
-          )}
+    <>
+      {Return ? <ReturnAll message={Return} /> : null}
+
+      <div className='w-25 absolute grid grid-flow-row -ml-[120px] mt-10 overflow-hidden leading-relaxed rounded-3xl bg-gray-900 -z-10'>
+        {isUser() ? (
+          <div className='text-sm p-2 mx-1 cursor-pointer'>
+            {!IsFollow ? (
+              <p className='' onClick={Follow}>
+                Seguir Usuário
+              </p>
+            ) : (
+              <p className='text-orange-500' onClick={Follow}>
+                Deixar de Seguir
+              </p>
+            )}
+          </div>
+        ) : (
+          <div className='text-sm p-2 mx-1 opacity-50 cursor-default'>
+            <p className=''>Você é este Usuário</p>
+          </div>
+        )}
+        <div className='text-sm p-2 mx-1'>
+          <p
+            className='underline text-orange-500 cursor-pointer'
+            onClick={Strike}>
+            Denunciar
+          </p>
         </div>
-      ) : (
-        <div className='text-sm p-2 mx-1 opacity-50 cursor-default'>
-          <p className=''>Você é este Usuário</p>
-        </div>
-      )}
-      <div className='text-sm p-2 mx-1'>
-        <p
-          className='underline text-orange-500 cursor-pointer'
-          onClick={Strike}>
-          Denunciar
-        </p>
       </div>
-    </div>
+    </>
   )
 }

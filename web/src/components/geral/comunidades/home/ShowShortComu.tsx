@@ -2,8 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '/public/iconsGeneral/User2.svg'
-import { ISODateString } from 'next-auth'
 import { api } from '@/lib/api'
 import { useEffect, useState } from 'react'
 import { getUserJS } from '@/lib/authGithub'
@@ -25,26 +23,22 @@ interface Comunidade {
 
 export function ShowShortComu() {
   const [Community, setCommunity] = useState<Comunidade | null>(null)
+  const routes = useRouter()
+  const jwtInFo = getUserJS()
 
   const fetchData = async () => {
     const response = await api.get('/comunidade')
-
-    console.log(response.data)
 
     setCommunity(response.data)
   }
 
   useEffect(() => {
     fetchData()
+
+    if (!jwtInFo) {
+      routes.push('/cadastrar?error=UserLoggedRequire')
+    }
   }, [])
-
-  const routes = useRouter()
-
-  const jwtInFo = getUserJS()
-
-  if (!jwtInFo) {
-    routes.push('/cadastrar?error=UserLoggedRequire')
-  }
 
   return (
     <>

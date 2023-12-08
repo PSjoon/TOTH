@@ -25,6 +25,7 @@ export function MainConfigComu() {
   const [Descript, setDescript] = useState('')
   const [Title, setTitle] = useState('')
   const [IsPublic, setIsPublic] = useState(false)
+  const jwtInFo = getUserJS()
 
   // get User
   const [userData, setUserData] = useState<User | null>(null)
@@ -34,6 +35,10 @@ export function MainConfigComu() {
   }
 
   useEffect(() => {
+    if (!jwtInFo) {
+      routes.push('/cadastrar?error=UserLoggedRequire')
+    }
+
     if (userData?.isPublic) {
       setIsPublic(userData.isPublic)
     }
@@ -45,8 +50,6 @@ export function MainConfigComu() {
   // media Picker
   const [preview, setPreview] = useState<string | null>(null)
   const [files, setFiles] = useState<FileList | null>(null)
-
-  const jwtInFo = getUserJS()
 
   const handleChange = (e: any) => {
     const inputValue = e.target.value

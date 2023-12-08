@@ -3,7 +3,7 @@
 import { api } from '@/lib/api'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { FormEvent, useEffect, useState } from 'react'
 import { OptionsCommunity } from './OptionsCommunity'
 import { Main } from '../../main/Main'
@@ -102,7 +102,12 @@ export function Community() {
     }
   }
 
+  const routes = useRouter()
+
   useEffect(() => {
+    if (!jwtInFo) {
+      routes.push('/cadastrar?error=UserLoggedRequire')
+    }
     fetchData()
   }, [id])
 

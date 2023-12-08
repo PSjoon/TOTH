@@ -21,6 +21,8 @@ type newPasswordFormsData = z.infer<typeof newPasswordFormsSchema>
 
 export function AddEmail() {
   const [Retorno, setRetorno] = useState('')
+  const routes = useRouter()
+  const jwtInFo = getUserJS()
 
   const {
     register,
@@ -30,11 +32,10 @@ export function AddEmail() {
     resolver: zodResolver(newPasswordFormsSchema),
   })
 
-  const routes = useRouter()
-
   function ChangePassword(data: any) {
     const email = data.email
-    console.log(email)
+
+    setRetorno('emailSet')
 
     const templateParams = {
       to_name: email,
@@ -61,13 +62,17 @@ export function AddEmail() {
       )
   }
 
+  useEffect(() => {
+    if (jwtInFo) {
+      routes.push('/cadastrar?error=UserLoggedRequire')
+    }
+  }, [])
+
   return (
     <>
-      {Retorno == 'Senha Alterada com Sucesso' ? (
-        <div className='absolute bottom-[82vh] -left-1 text-orange-500 bg-gray-300 opacity-80 rounded-r-3xl rounded-l-lg p-2 pl-4'>
-          <div className='flex'>
-            Senha Alterada com Sucesso, Redirecionando para o Inicio...
-          </div>
+      {Retorno == 'emailSet' ? (
+        <div className='absolute bottom-[91vh] -left-1 text-orange-500 bg-gray-300 opacity-80 rounded-r-3xl rounded-l-lg p-2 pl-4'>
+          <div className='flex'>Consulte sua Caixa de Entrada...</div>
         </div>
       ) : null}
 

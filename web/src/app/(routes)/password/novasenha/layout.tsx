@@ -29,7 +29,7 @@ export default function RootLayout({
             <Image alt='Logo' src={logo} />
           </div>
 
-          <div className='flex flex-col items-center justify-center mx-2 mb-4 pt-5 lg:mt-4 lg:mx-12  rounded-3xl border-orange-500 border-y-[1.5px] bg-gray-200 '>
+          <div className='flex flex-col items-center justify-center mx-2 mb-4 lg:mt-4 lg:mx-12 rounded-3xl border-orange-500 border-y-[1.5px] bg-gray-200 '>
             <ForgotPassword />
           </div>
         </main>

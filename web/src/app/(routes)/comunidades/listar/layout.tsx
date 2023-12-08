@@ -8,7 +8,6 @@ import { OptionsProfile } from '@/components/geral/profile/OptionsProfile'
 import { ArtigoPage } from '@/components/geral/main/ArtigoPage'
 import { ArtigoComment } from '@/components/geral/main/ArtigoComment'
 import { MainComu } from '@/components/geral/comunidades/home/MainComu'
-import { ShowShortComu } from '@/components/geral/comunidades/home/ShowShortComu'
 import { ListarComu } from '@/components/geral/comunidades/home/ListarComu'
 
 export const metadata: Metadata = {

@@ -1,16 +1,11 @@
 'use client'
 
-import { User2 } from 'lucide-react'
-import Github from 'public/iconsProfile/icon-github.svg'
-import Linkedin from 'public/iconsProfile/icon-linkedin.svg'
-import Lattes from 'public/iconsProfile/icon-lattes.svg'
 import Image from 'next/image'
 import { OptionsProfile } from './OptionsProfile'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { api } from '@/lib/api'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { NoPost } from '../user/NoPost'
 import { AnimationRedes } from './AnimationRedes'
 import { getUserJS } from '@/lib/authGithub'
 import User from '/public/iconsGeneral/User2.svg'
@@ -46,9 +41,11 @@ export function ProfileUser() {
     fetchData()
   }, [by])
 
+  const routes = useRouter()
+
   useEffect(() => {
-    if (jwtInFo) {
-      setIsLogged(true)
+    if (!jwtInFo) {
+      routes.push('/cadastrar?error=UserLoggedRequire')
     }
   }, [])
 
@@ -59,27 +56,19 @@ export function ProfileUser() {
           <div className='md:mx-6 lg:mx-28 lg:ml-[133px] mx-2 border-y-[1px] border-orange-500 rounded-3xl bg-gray-200'>
             <div className='grid grid-cols-2 grid-flow-row p-[11px] items-center'>
               <div>
-                {isLogged ? (
-                  <Link href={`/perfil/${userData.id}`}>
-                    <div
-                      className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  bg-white-200 overflow-hidden mb-2'
-                      title='Acessar Perfis'>
-                      <Image
-                        src={userData.profilePictures}
-                        alt=''
-                        width={128}
-                        height={128}
-                      />
-                    </div>
-                  </Link>
-                ) : (
-                  <Image
-                    src={User}
-                    alt='Logado'
-                    className='w-11 h-11 rounded-full border shadow-2xl cursor-pointer'
-                    title='Opções de Usuário'
-                  />
-                )}
+                <Link href={`/perfil/${userData.id}`}>
+                  <div
+                    className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  bg-white-200 overflow-hidden mb-2'
+                    title='Acessar Perfis'>
+                    <Image
+                      src={userData.profilePictures}
+                      alt=''
+                      width={128}
+                      height={128}
+                    />
+                  </div>
+                </Link>
+
                 <div className='sm:text-sm md:text-xl ml-4'>
                   <p>{userData.username}</p>
                   <div className='italic text-orange-500'>

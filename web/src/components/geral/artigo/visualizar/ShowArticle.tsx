@@ -14,6 +14,7 @@ import upIcon from '/public/iconsPost/up.svg'
 import scielo from '/public/iconsPost/scielo.svg'
 import scieloHover from '/public/iconsPost/scieloHover.svg'
 import { Download } from 'lucide-react'
+import { Comment } from '@/components/geral/artigo/visualizar/Comment'
 
 interface ArtigoUser {
   id: string
@@ -107,7 +108,7 @@ export function ShowArticle() {
               <OptionsPost artigo={userData} />
             </header>
             {userData.photo ? (
-              <div className='mx-2 opacity-30'>
+              <div className='mx-2 '>
                 <Image
                   src={userData.photo}
                   alt=''
