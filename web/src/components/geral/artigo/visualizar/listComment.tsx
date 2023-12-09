@@ -111,12 +111,12 @@ export function ListComment() {
       {DataComment ? (
         DataComment.map((comment: any) => (
           <>
-            <div className='h-[305px] mx-2 lg:mx-52 mb-4 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 '>
+            <div className='h-[305px] mx-2 lg:mx-52  border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 '>
               <header className='h-[10vh] lg:h-[14vh] flex items-center justify-between p-2'>
                 <div className='p-2 mt-4 flex justify-center items-center'>
                   <Link href={`/perfil/${comment.by}`}>
                     <div
-                      className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  bg-white-200 overflow-hidden'
+                      className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  overflow-hidden'
                       title='Acessar Perfis'>
                       <Image
                         src={comment.profilePictures}
@@ -184,7 +184,7 @@ export function ListComment() {
             {CommentTwoID === comment.id ? (
               <>
                 <form
-                  className='mx-2 lg:mx-56 lg:ml-72 mb-4 gap-4 flex items-center justify-center'
+                  className='mx-2 lg:mx-56 lg:ml-72 my-4 gap-4 flex items-center justify-center'
                   onSubmit={HandleSubmit}>
                   <input
                     type='text'
@@ -213,7 +213,7 @@ export function ListComment() {
                             <div className='p-2 mt-4 flex justify-center items-center'>
                               <Link href={`/perfil/${commentTwo.by}`}>
                                 <div
-                                  className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  bg-white-200 overflow-hidden'
+                                  className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2 overflow-hidden'
                                   title='Acessar Perfis'>
                                   <Image
                                     src={commentTwo.profilePictures}
@@ -278,9 +278,7 @@ export function ListComment() {
           </>
         ))
       ) : (
-        <>
-          <div></div>
-        </>
+        <></>
       )}
     </>
   )

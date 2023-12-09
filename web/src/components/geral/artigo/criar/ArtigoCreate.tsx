@@ -46,10 +46,6 @@ export function ArtigoCreate() {
     const filePDFUpload = formData.get('filePDF')
     const jwtInFo = getUserJS()
 
-    // console.log(filePDFUpload)
-    // console.log(fileUpload)
-    // console.log(formData)
-
     let coverUrl = ''
     let filePDF = ''
 
@@ -61,13 +57,8 @@ export function ArtigoCreate() {
       uploadFormData.set('file', fileUpload)
       uploadPDFFormData.set('file', filePDFUpload)
 
-      // console.log(uploadFormData)
-
       const uploadResponse = await api.post('/uploads', uploadFormData)
       const uploadPDFResponse = await api.post('/uploadsPDF', uploadPDFFormData)
-
-      // console.log(uploadResponse)
-      // console.log(uploadPDFResponse)
 
       coverUrl = uploadResponse.data.fileUrl
       filePDF = uploadPDFResponse.data.fileUrl
@@ -79,9 +70,6 @@ export function ArtigoCreate() {
       if (!filePDF) {
         filePDF = ''
       }
-
-      // console.log(coverUrl)
-      // console.log(filePDF)
 
       try {
         const response = await api.post('/artigo/criar', {

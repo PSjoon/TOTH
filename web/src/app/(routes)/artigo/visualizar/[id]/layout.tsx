@@ -44,12 +44,12 @@ export default function RootLayout({
         <Comment />
       </div>
 
-      <div className='md:mx-4 lg:ml-10'>
+      <div className='md:mx-4 lg:ml-10 -mb-4'>
         <ListComment />
       </div>
 
       <footer>
-        <div className='md:hidden lg:hidden'>
+        <div className='md:hidden'>
           <Footer />
         </div>
       </footer>
