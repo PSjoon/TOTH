@@ -105,9 +105,6 @@ export async function Perfil(app: FastifyInstance) {
     const { user } = userSchema.parse(req.body)
     const { sub } = subSchema.parse(req.params)
 
-    console.log(user)
-    console.log(sub)
-
     const checkFollow = await prisma.usuario.findUnique({
       where: {
         id: sub,

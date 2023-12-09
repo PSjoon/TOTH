@@ -25,7 +25,7 @@ export function OptionsCommunity() {
 
   return (
     <>
-      <div className='flex float-left -mt-[166px] ml-52 justify-between items-center'>
+      <div className='flex -mt-0.5 -ml-2.5 justify-between items-center'>
         <span title='Opções'>
           <CircleEllipsis
             className='w-[26px] h-[26px] md:w-[28px] md:h-[28px] cursor-pointer'

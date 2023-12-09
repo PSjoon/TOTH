@@ -25,6 +25,7 @@ export function ProfileComuni() {
   const fetchData = async () => {
     try {
       const response = await api.get(`/user/${by}`)
+      console.log(response)
 
       setUserData(response.data)
     } catch (error) {

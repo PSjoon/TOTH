@@ -3,7 +3,7 @@
 import { api } from '@/lib/api'
 import { Move } from 'lucide-react'
 import { fetchData } from 'next-auth/client/_utils'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { ReactSortable } from 'react-sortablejs'
 
@@ -51,11 +51,18 @@ export function ListCollege() {
     fetchData()
   }, [by])
 
+  const routes = useRouter()
+
   async function handleSumbit() {
     try {
       const response = await api.post(`/college/modify/${by}`, {
         state,
       })
+
+      console.log(response)
+      if (response) {
+        routes.push('/')
+      }
     } catch (error) {
       console.log(error)
     }
@@ -64,7 +71,7 @@ export function ListCollege() {
   return (
     <>
       <div className='h-[70vh] grid grid-flow-row mx-2 my-4 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200'>
-        {state ? (
+        {state.length >= 1 ? (
           <div className='grid grid-flow-row grid-rows-2'>
             <div className='p-4'>
               <ReactSortable list={state} setList={setState}>
@@ -79,7 +86,7 @@ export function ListCollege() {
               </ReactSortable>
             </div>
             <div></div>
-            {state ? (
+            {state.length >= 1 ? (
               <div className='flex justify-center'>
                 <button
                   className='h-10 my-4 hover:bg-orange-600 text-black font-bold focus:outline-none focus:shadow-outline rounded-full bg-orange-500 p-2'
@@ -90,7 +97,13 @@ export function ListCollege() {
               </div>
             ) : null}
           </div>
-        ) : null}
+        ) : (
+          <>
+            <div className='flex justify-center items-center my-32 border border-y-orange-500 mx-32 rounded-3xl bg-gray-300'>
+              <p>Nenhum Seguidor Encontrado</p>
+            </div>
+          </>
+        )}
       </div>
     </>
   )

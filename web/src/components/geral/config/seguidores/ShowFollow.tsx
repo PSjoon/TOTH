@@ -28,8 +28,6 @@ export function ShowFollow() {
 
       const response = await api.get(`/showfollow/${sub}`)
 
-      console.log(response)
-
       const searchUser: User[] = response.data
 
       setSearchUser(searchUser)
@@ -42,34 +40,40 @@ export function ShowFollow() {
 
   return (
     <>
-      {searchUserState
-        ? searchUserState.map((searchUserState) => {
-            return (
-              <div className='flex p-4 justify-center items-center border border-y-orange-500 mx-32 rounded-3xl my-4 bg-gray-300'>
-                <Link href={`/perfil/${searchUserState.id}`}>
-                  <div
-                    className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  bg-white-200 overflow-hidden mb-2'
-                    title='Acessar Perfis'>
-                    <Image
-                      src={searchUserState.profilePictures}
-                      alt=''
-                      width={128}
-                      height={128}
-                    />
-                  </div>
-                </Link>
-
-                <div className='sm:text-sm md:text-xl ml-4'>
-                  <p>{searchUserState.username}</p>
-
-                  <p className='italic text-orange-500'>
-                    {searchUserState.college[0]}
-                  </p>
+      {searchUserState.length >= 1 ? (
+        searchUserState.map((searchUserState) => {
+          return (
+            <div className='flex p-4 justify-center items-center border border-y-orange-500 mx-32 rounded-3xl my-4 bg-gray-300'>
+              <Link href={`/perfil/${searchUserState.id}`}>
+                <div
+                  className='w-[11vw] h-[11vw] md:w-[6vw] md:h-[6vw] lg:w-[5vw] rounded-full lg:h-[5vw] ml-2  bg-white-200 overflow-hidden mb-2'
+                  title='Acessar Perfis'>
+                  <Image
+                    src={searchUserState.profilePictures}
+                    alt=''
+                    width={128}
+                    height={128}
+                  />
                 </div>
+              </Link>
+
+              <div className='sm:text-sm md:text-xl ml-4'>
+                <p>{searchUserState.username}</p>
+
+                <p className='italic text-orange-500'>
+                  {searchUserState.college[0]}
+                </p>
               </div>
-            )
-          })
-        : null}
+            </div>
+          )
+        })
+      ) : (
+        <>
+          <div className='flex justify-center items-center mt-[25%] p-8 border border-y-orange-500 mx-32 rounded-3xl bg-gray-300'>
+            <p>Nenhum Seguidor Encontrado</p>
+          </div>
+        </>
+      )}
     </>
   )
 }

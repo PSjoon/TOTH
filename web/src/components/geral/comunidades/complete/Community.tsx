@@ -11,6 +11,8 @@ import { MainCommunit } from './MainCommunity'
 import iconCreate from '/public/iconsGeneral/create-on.svg'
 import iconCreateHover from '/public/iconsGeneral/create.svg'
 import { getUserJS } from '@/lib/authGithub'
+import { PlusCircle } from 'lucide-react'
+import { fetchData } from 'next-auth/client/_utils'
 
 interface CommunityInter {
   id: string
@@ -104,11 +106,42 @@ export function Community() {
 
   const routes = useRouter()
 
+  const [iconColor, setIconColor] = useState('#EFEFEF')
+
+  const getfollow = async () => {
+    if (jwtInFo) {
+      const { sub } = jwtInFo
+
+      const userFollows = await api.post(`userCommunityCheck/${id}`, {
+        sub,
+      })
+
+      if (userFollows.data.includes(id)) {
+        setIconColor(iconColor === '#EFEFEF' ? '#F56B07' : '#EFEFEF')
+      }
+    }
+  }
+
+  const handleIconClick = async () => {
+    setIconColor(iconColor === '#EFEFEF' ? '#F56B07' : '#EFEFEF')
+
+    if (jwtInFo) {
+      const { sub } = jwtInFo
+
+      const response = await api.post(`/follwoComu/${id}`, {
+        sub,
+      })
+
+      console.log(response)
+    }
+  }
+
   useEffect(() => {
     if (!jwtInFo) {
       routes.push('/cadastrar?error=UserLoggedRequire')
     }
     fetchData()
+    getfollow()
   }, [id])
 
   return (
@@ -172,7 +205,7 @@ export function Community() {
           ) : null}
           <div className='flex gap-8'>
             <p
-              className='ml-2 my-2 italic text-orange-500 text-lg'
+              className='ml-2 my-2 italic text-orange-500 text-lg '
               title='Nome Comunidade'>
               {DataCommunity.comuName}
             </p>
@@ -190,6 +223,10 @@ export function Community() {
                 title='Criar Postagem'
               />
             </div>
+            <div className='flex -ml-2 mt-2 cursor-pointer'>
+              <PlusCircle onClick={handleIconClick} color={iconColor} />
+            </div>
+            {IdLogUser == DataCommunity?.by ? <OptionsCommunity /> : null}
           </div>
 
           <div className='flex items-center gap-4'>
@@ -219,7 +256,6 @@ export function Community() {
         </div>
       ) : null}
 
-      {IdLogUser == DataCommunity?.by ? <OptionsCommunity /> : null}
       {/* <MainCommunit /> */}
     </>
   )

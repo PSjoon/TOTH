@@ -177,26 +177,22 @@ export async function Community(app: FastifyInstance) {
 
     const { by } = createArticleSchemaParams.parse(req.params)
 
-    const comuUser = await prisma.usuario.findMany({
+    const comuUser = await prisma.usuario.findUnique({
+      where: {
+        id: by,
+      },
       select: {
         communityMember: true,
       },
     })
 
-    const communityMembers = comuUser
-      .map((user) => user.communityMember)
-      .flat()
-      .filter((value) => value !== '')
+    console.log(comuUser?.communityMember)
 
-    const queryCommunity = await prisma.comunidade.findMany({
-      where: {
-        id: {
-          in: communityMembers,
-        },
-      },
-    })
+    if (comuUser) {
+      const queryComu = await prisma.comunidade.findMany({})
 
-    return queryCommunity
+      return queryComu
+    }
   })
 
   app.post('/arrowUpPost', async (req) => {
@@ -303,5 +299,87 @@ export async function Community(app: FastifyInstance) {
     })
 
     return communityUse
+  })
+
+  app.post('/userCommunityCheck/:id', async (req, res) => {
+    const createArticleSchemaParams = z.object({
+      id: z.string(),
+    })
+
+    const checkUser = z.object({
+      sub: z.string(),
+    })
+
+    const { id } = createArticleSchemaParams.parse(req.params)
+    const { sub } = checkUser.parse(req.body)
+
+    const communityUse = await prisma.usuario.findUnique({
+      where: {
+        id: sub,
+      },
+      select: {
+        communityMember: true,
+      },
+    })
+
+    return communityUse?.communityMember
+  })
+
+  app.post('/follwoComu/:id', async (req, res) => {
+    const createArticleSchemaParams = z.object({
+      id: z.string(),
+    })
+
+    const addUser = z.object({
+      sub: z.string(),
+    })
+
+    const { id } = createArticleSchemaParams.parse(req.params)
+    const { sub } = addUser.parse(req.body)
+
+    console.log(id)
+    console.log(sub)
+
+    const checkFollow = await prisma.usuario.findUnique({
+      where: {
+        id: sub,
+      },
+      select: {
+        communityMember: true,
+      },
+    })
+
+    if (!checkFollow?.communityMember.includes(id)) {
+      const followUser = await prisma.usuario.update({
+        where: {
+          id: sub,
+        },
+        data: {
+          communityMember: {
+            push: id,
+          },
+        },
+      })
+      res.status(201)
+      return followUser
+    }
+
+    const updateUserFollow = checkFollow.communityMember.filter(
+      (communityMember) => communityMember !== id,
+    )
+
+    const deleteFollow = await prisma.usuario.update({
+      where: {
+        id: sub,
+      },
+      data: {
+        communityMember: {
+          set: updateUserFollow,
+        },
+      },
+    })
+
+    res.status(202)
+    return deleteFollow
   })
 }
