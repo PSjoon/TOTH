@@ -41,16 +41,23 @@ export function HomeGeral() {
         </div>
       </div>
 
-      <div className='mx-2 h-96 lg:mx-[4%] md:my-4 my-10 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'>
+      <div className='mx-2 h-[600px] md:h-[500px] lg:h-96 lg:mx-[4%] md:my-4 my-10 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'>
         <div className='flex justify-between gap-8 md:gap-12 lg:gap-32 '>
           <div className=' flex flex-col justify-center text-justify items-center my-4'>
             <p>Mariana Ferreira</p>
             <p
               className='text-orange-500
             '>
-              Co-Fundador TOTH
+              Co-Fundadora TOTH
             </p>
-            <div className='h-full my-4 w-[26vw]  lg:w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'></div>
+            <div className='h-full my-4 w-[26vw] lg:w-56 border-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 text-left leading-relaxed'>
+              <p className='p-2'>
+                A criação do TOTH trouxe consigo desafios significativos na
+                definição da arquitetura. Integrar eficientemente as diversas
+                funcionalidades demandou esforços para garantir a escalabilidade
+                e a performance do sistema.
+              </p>
+            </div>
           </div>
 
           <div className=' flex flex-col justify-center text-justify items-center my-4'>
@@ -60,7 +67,14 @@ export function HomeGeral() {
             '>
               Co-Fundador TOTH
             </p>
-            <div className='h-full my-4 w-[26vw]  lg:w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'></div>
+            <div className='h-full my-4 w-[26vw] lg:w-56 border-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 text-left leading-relaxed'>
+              <p className='p-2'>
+                A diversidade de usuários demandou uma interface intuitiva e
+                amigável. A coleta e análise contínua de feedback dos
+                orientadores foram essenciais para ajustes finos, visando
+                proporcionar uma experiência fluida e eficaz.
+              </p>
+            </div>
           </div>
 
           <div className=' flex flex-col justify-center text-justify items-center my-4'>
@@ -70,7 +84,14 @@ export function HomeGeral() {
             '>
               Co-Fundador TOTH
             </p>
-            <div className='h-full my-4 w-[26vw]  lg:w-52 border-y-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200  flex justify-center'></div>
+            <div className='h-full my-4 w-[26vw] lg:w-56 border-[1px] rounded-3xl border-orange-500 text-white-200 bg-gray-200 text-left leading-relaxed'>
+              <p className='p-2'>
+                A necessidade de garantir a segurança das informações dos
+                usuário adicionou uma camada extra de desafio. As medidas de
+                criptografia e a implementação rigorosa de protocolos de
+                segurança foram fundamentais para proteger os usuários
+              </p>
+            </div>
           </div>
         </div>
       </div>

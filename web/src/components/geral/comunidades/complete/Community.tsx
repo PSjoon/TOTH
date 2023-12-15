@@ -131,8 +131,6 @@ export function Community() {
       const response = await api.post(`/follwoComu/${id}`, {
         sub,
       })
-
-      console.log(response)
     }
   }
 

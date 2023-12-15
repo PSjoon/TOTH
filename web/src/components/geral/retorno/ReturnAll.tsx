@@ -18,7 +18,7 @@ export function ReturnAll(message: any) {
 
   if (copiedMessageVisible) {
     return (
-      <div className='absolute -ml-12 -mt-8 text-orange-500 bg-gray-300 opacity-80 rounded-r-3xl rounded-l-lg p-2 pl-4 z-50'>
+      <div className='fixed -ml-12 -mt-8 text-orange-500 bg-gray-300 opacity-80 rounded-r-3xl rounded-l-lg p-2 pl-4 z-50'>
         <div className='flex'>Artigo Copiado</div>
       </div>
     )

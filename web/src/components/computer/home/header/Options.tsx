@@ -1,6 +1,5 @@
 import { getUserJS } from '@/lib/authGithub'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 export function Options() {
   const jwtInFo = getUserJS()

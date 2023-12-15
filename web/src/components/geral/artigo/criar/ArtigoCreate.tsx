@@ -6,8 +6,6 @@ import { FormEvent, useMemo, useState } from 'react'
 import { api } from '@/lib/api'
 import dynamic from 'next/dynamic'
 import './quill.css'
-import Cookies from 'js-cookie'
-import { decode } from 'next-auth/jwt'
 import { getUserJS } from '@/lib/authGithub'
 import { useRouter } from 'next/navigation'
 
